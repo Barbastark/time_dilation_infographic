@@ -71,23 +71,24 @@ $cb: calc($orbit/10);
 }
 
 .orbit {
-  border: 1px #555 solid;
+  border: 1px #444 solid;
   transform-style: preserve-3d;
 
   .mercury {
     @include planet();
-    background-color: #d35400;
-    box-shadow: 0 0 20px #d35400;
+    background-color: #6b2d04;
+    box-shadow: 0 0 20px #6b2d04;
     width: 1.5vh;
     height: 1.5vh;
   }
 
   .venus {
     @include planet();
-    background-color: #f39c12;
-    box-shadow: 0 0 20px #f39c12;
+    background-color: #c59c5a;
+    box-shadow: 0 0 20px #c59c5a;
     width: 2.5vh;
     height: 2.5vh;
+
   }
 
   .earth {
@@ -111,48 +112,48 @@ $cb: calc($orbit/10);
 
   .mars {
     @include planet();
-    background-color: #c74c3c;
-    box-shadow: 0 0 20px #c74c3c;
+    background-color: #c21e08;
+    box-shadow: 0 0 20px #c21e08;
     width: 2.2vh;
     height: 2.2vh;
   }
 
   .jupiter {
     @include planet();
-    background-color: #bdc3c7;
-    box-shadow: 0 0 20px #bdc3c7;
+    background-color: #9e4e0c;
+    box-shadow: 0 0 20px #9e4e0c;
     width: 5.5vh;
     height: 5.5vh;
   }
 
   .saturn {
     @include planet();
-    background-color: #fc6;
-    box-shadow: 0 0 20px #fc6;
+    background-color: rgb(218, 154, 28);
+    box-shadow: 0 0 20px rgb(218, 154, 28);
     width: 5vh;
     height: 5vh;
   }
 
   .uranus {
     @include planet();
-    background-color: #16a085;
-    box-shadow: 0 0 20px #16a085;
+    background-color: #1c6657;
+    box-shadow: 0 0 20px #1c6657;
     width: 4.2vh;
     height: 4.2vh;
   }
 
   .neptune {
     @include planet();
-    background-color: #34495e;
-    box-shadow: 0 0 20px #34495e;
+    background-color: #0c82f8;
+    box-shadow: 0 0 20px #0c82f8;
     width: 4.2vh;
     height: 4.2vh;
   }
 
   .pluto {
     @include planet();
-    background-color: #c74c3c;
-    box-shadow: 0 0 20px #c74c3c;
+    background-color: #edf3f8;
+    box-shadow: 0 0 20px #edf3f8;
     width: 1.5vh;
     height: 1.5vh;
   }
