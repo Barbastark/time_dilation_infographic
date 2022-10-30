@@ -1,0 +1,184 @@
+.space-time {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #000;
+}
+
+.space-time::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    /* stars */
+    radial-gradient(circle, rgba(255, 255, 255, 0.4), 0.125vmin, #fff0 0) 17% 17% / 31% 31%,
+    radial-gradient(circle, rgba(255, 255, 255, 0.5), 0.1vmin, #fff0 0) 12% 18% / 25% 24%,
+    radial-gradient(circle, rgba(255, 255, 255, 0.5), 0.1vmin, #fff0 0) 19% 24% / 12% 17%,
+    radial-gradient(circle, rgba(255, 255, 255, 0.5), 0.11vmin, #fff0 0) 11% 21% / 21% 41%,
+    radial-gradient(circle, rgba(255, 255, 255, 0.5), 0.125vmin, #fff0 0) 15% 11% / 41% 33%,
+    radial-gradient(circle, rgba(255, 255, 255, 0.3), 0.15vmin, #fff0 0) 50% 50% / 37% 25%,
+    radial-gradient(circle, rgba(255, 255, 255, 0.3), 0.12vmin, #fff0 0) 57% 13% / 34% 23%,
+    radial-gradient(circle, rgba(255, 255, 255, 0.4), 0.125vmin, #fff0 0) 77% -17% / 23% 27%;
+
+}
+
+
+
+$orbit: 5vh;
+
+$cb: calc($orbit/10);
+
+
+
+@mixin style($mod) {
+  width: $mod * 3;
+  height: $mod * 3;
+  border-radius: 50%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  position: absolute;
+}
+
+@mixin planet($bottom: 0) {
+  position: absolute;
+  border-radius: 50%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: $bottom;
+  margin: auto;
+}
+
+.sun {
+  position: absolute;
+  z-index: 0;
+  border-radius: 50%;
+  top: calc(50% - 5vh);
+  left: calc(50% - 5vh);
+  background-color: #f39c12;
+  box-shadow: 0 0 100px #f39c12;
+  height: 10vh;
+  width: 10vh;
+}
+
+.orbit {
+  border: 1px #555 solid;
+  transform-style: preserve-3d;
+
+  .mercury {
+    @include planet();
+    background-color: #d35400;
+    box-shadow: 0 0 20px #d35400;
+    width: 1.5vh;
+    height: 1.5vh;
+  }
+
+  .venus {
+    @include planet();
+    background-color: #f39c12;
+    box-shadow: 0 0 20px #f39c12;
+    width: 2.5vh;
+    height: 2.5vh;
+  }
+
+  .earth {
+    @include planet();
+    background-color: #3498db;
+    box-shadow: 0 0 20px #3498db;
+    width: 2.8vh;
+    height: 2.8vh;
+  }
+
+  .moon {
+    top: 15%;
+    left: 50%;
+    background-color: #7f8c8d;
+    width: .66vh;
+    height: .66vh;
+    margin-left: 20px;
+    margin-top: 20px;
+    box-shadow: 0 0 20px#7f8c8d;
+  }
+
+  .mars {
+    @include planet();
+    background-color: #c74c3c;
+    box-shadow: 0 0 20px #c74c3c;
+    width: 2.2vh;
+    height: 2.2vh;
+  }
+
+  .jupiter {
+    @include planet();
+    background-color: #bdc3c7;
+    box-shadow: 0 0 20px #bdc3c7;
+    width: 5.5vh;
+    height: 5.5vh;
+  }
+
+  .saturn {
+    @include planet();
+    background-color: #fc6;
+    box-shadow: 0 0 20px #fc6;
+    width: 5vh;
+    height: 5vh;
+  }
+
+  .uranus {
+    @include planet();
+    background-color: #16a085;
+    box-shadow: 0 0 20px #16a085;
+    width: 4.2vh;
+    height: 4.2vh;
+  }
+
+  .neptune {
+    @include planet();
+    background-color: #34495e;
+    box-shadow: 0 0 20px #34495e;
+    width: 4.2vh;
+    height: 4.2vh;
+  }
+
+  .pluto {
+    @include planet();
+    background-color: #c74c3c;
+    box-shadow: 0 0 20px #c74c3c;
+    width: 1.5vh;
+    height: 1.5vh;
+  }
+
+  @for $i from 1 through 10 {
+
+    &:nth-child(#{$i}) {
+      @include style($orbit * $i);
+      transform: rotateZ(70deg) rotateY(70deg);
+
+      .cb {
+        animation-name: orbit#{$i};
+        animation-duration: $i * 2 + s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+      }
+
+      @keyframes orbit#{$i} {
+        from {
+          transform: rotateZ(0) translateX(1.5*$orbit*$i) rotateZ(0) rotateY(-70deg);
+        }
+
+        to {
+          transform: rotateZ(360deg) translateX(1.5*$orbit*$i) rotateZ(-360deg) rotateY(-70deg);
+        }
+      }
+    }
+  }
+}
